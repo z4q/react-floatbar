@@ -12,13 +12,15 @@ class Floatbar extends Component {
       scrollRefEl: this.scrollRef.current,
       visible: true,
       preventSyncCont: false,
-      preventSyncSbar: false
+      preventSyncSbar: false,
     };
     this.checkVisibility = () => {
       let visible = true;
       const elToScrolls = document.getElementsByClassName("floatbar")[0];
       if (elToScrolls) {
-        visible = window.scrollY + window.innerHeight <= this.offsetPost(document.getElementsByClassName("endTable")[0]).top;
+        visible =
+          window.scrollY + window.innerHeight <=
+          this.offsetPost(document.getElementsByClassName("endTable")[0]).top;
       }
       this.setState({ visible });
     };
@@ -33,7 +35,7 @@ class Floatbar extends Component {
     const lots = this;
 
     if (contentRefEl && elToScroll) {
-      elToScroll.onscroll = e => {
+      elToScroll.onscroll = (e) => {
         lots.syncSbar(e.target, true);
       };
       elToScroll.onfocus = () => {
@@ -43,7 +45,7 @@ class Floatbar extends Component {
 
     if (scrollRefEl) {
       const elToScrolls = document.getElementsByClassName("floatbar")[0];
-      elToScrolls.onscroll = e => {
+      elToScrolls.onscroll = (e) => {
         lots.state.visible && lots.syncCont(e.target, true);
       };
     }
@@ -106,24 +108,36 @@ class Floatbar extends Component {
   }
   offsetPost(el) {
     const rect = el.getBoundingClientRect(),
-          scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-          scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     return { top: rect.top + scrollTop, left: rect.left + scrollLeft };
   }
   render() {
     const { visible, contentRefEl } = this.state;
-    return createElement(Fragment, null, this.props.children, createElement("div", {
-      className: "endTable"
-    }), createElement("div", {
-      className: `floatbar${!visible ? " floatbar-hide" : ""}`,
-      style: {
-        width: `${contentRefEl ? contentRefEl.offsetWidth : 0}px`,
-        left: `${contentRefEl ? contentRefEl.getBoundingClientRect().left : 0}px`
-      },
-      ref: this.scrollRef
-    }, createElement("div", {
-      ref: this.scrollBlockRef
-    })));
+    return createElement(
+      Fragment,
+      null,
+      this.props.children,
+      createElement("div", {
+        className: "endTable",
+      }),
+      createElement(
+        "div",
+        {
+          className: `floatbar${!visible ? " floatbar-hide" : ""}`,
+          style: {
+            width: `${contentRefEl ? contentRefEl.offsetWidth : 0}px`,
+            left: `${
+              contentRefEl ? contentRefEl.getBoundingClientRect().left : 0
+            }px`,
+          },
+          ref: this.scrollRef,
+        },
+        createElement("div", {
+          ref: this.scrollBlockRef,
+        })
+      )
+    );
   }
   // render2() {
   //   const { visible, contentRefEl } = this.state;
@@ -151,7 +165,7 @@ class Floatbar extends Component {
 Floatbar.propTypes = {
   contentRef: PropTypes.object.isRequired,
   tableName: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export default Floatbar;

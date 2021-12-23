@@ -1,0 +1,49 @@
+.floatbar {
+  bottom: 0;
+  height: 35px;
+  overflow: auto;
+  position: fixed;
+}
+.floatbar-hide {
+  bottom: 99999px;
+}
+
+.floatbar,
+.floatbar div {
+  font-size: 1px;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.floatbar div {
+  height: 1px;
+  overflow: auto;
+  /* pointer-events:none; */
+}
+
+.floatbar div:before {
+  content: "\A0";
+}
+
+.floatbar-viewport {
+  position: relative;
+}
+
+.floatbar-body {
+  overflow: auto;
+}
+
+.floatbar-viewport .floatbar {
+  left: 0;
+  position: absolute;
+}
+
+.floatbar-hoverable .floatbar {
+  opacity: 0;
+  transition: opacity 0.5s ease 0.3s;
+}
+
+.floatbar-hoverable:hover .floatbar {
+  opacity: 1;
+}

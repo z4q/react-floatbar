@@ -1,0 +1,33 @@
+{
+  "name": "react-floatbar",
+  "version": "0.0.1",
+  "description": "React Floating Scrollbar",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/z4q/react-floatbar.git"
+  },
+  "keywords": [
+    "scroll",
+    "react",
+    "react-component"
+  ],
+  "dependencies": {
+    "prop-types": "^15.5.8"
+  },
+  "peerDependencies": {
+    "react": "0.13 - 16"
+  },
+  "author": "Ruzaini",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/z4q/react-floatbar/issues"
+  },
+  "homepage": "https://github.com/z4q/react-floatbar#readme"
+}
